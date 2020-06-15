@@ -55,6 +55,7 @@
       number: '',
       numberRules: [
         v => !!v || 'A binary number is required',
+        v => (v &&  /(0|1)/g.test(v)) || 'Only binary numbers 0 and 1 are allowed',
         v => (v && v.length <= 8) || 'The binary number must be less than 8 characters',
       ],
     }),
