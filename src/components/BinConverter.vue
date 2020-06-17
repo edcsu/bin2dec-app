@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row class="">
-      <v-col cols="8">
+      <v-col cols="6">
         <v-card
           class="mx-auto pa-3"
           outlined
@@ -16,7 +16,6 @@
                 :counter="8"
                 :rules="numberRules"
                 label="Binary number"
-                required
                 ></v-text-field>
 
                 <v-btn
