@@ -12,9 +12,9 @@
       <v-spacer></v-spacer>
     </v-app-bar>
 
-    <v-content>
+    <v-main>
       <BinConverter/>
-    </v-content>
+    </v-main>
   </v-app>
 </template>
 

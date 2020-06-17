@@ -60,6 +60,8 @@
 
 
 <script>
+  import { binToDecimal } from "@/Helpers/helperMethods";
+
   export default {
     name: 'BinConverter',
     data: () => ({
@@ -67,7 +69,7 @@
       number: '',
       numberRules: [
         v => !!v || 'A binary number is required',
-        v => (v &&  /(0|1)/g.test(v)) || 'Only binary numbers 0 and 1 are allowed',
+        v => (v && /^[01]+$/.test(v)) || 'Only binary numbers 0 and 1 are allowed',
         v => (v && v.length <= 8) || 'The binary number must be less than 8 characters',
       ],
       convertedNumber: ''
@@ -76,7 +78,7 @@
     methods: {
       Convert () {
         this.$refs.form.validate()
-        this.convertedNumber = this.number
+        this.convertedNumber = binToDecimal(this.number)
       },
       reset () {
         this.$refs.form.reset()
