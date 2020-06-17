@@ -1,7 +1,11 @@
 <template>
   <v-container>
-    <v-row class="text-center">
-      <v-col cols="6">
+    <v-row class="">
+      <v-col cols="8">
+        <v-card
+          class="mx-auto pa-3"
+          outlined
+        >
             <v-form
                 ref="form"
                 v-model="valid"
@@ -19,9 +23,9 @@
                 :disabled="!valid"
                 color="success"
                 class="mr-4"
-                @click="validate"
+                @click="Convert"
                 >
-                Validate
+                Convert
                 </v-btn>
 
                 <v-btn
@@ -29,18 +33,26 @@
                 class="mr-4"
                 @click="reset"
                 >
-                Reset Form
-                </v-btn>
-
-                <v-btn
-                color="warning"
-                @click="resetValidation"
-                >
-                Reset Validation
+                Reset Number
                 </v-btn>
             </v-form>
-
-
+        </v-card>
+      </v-col>
+    </v-row>
+    <v-row class="">
+      <v-col cols="3">
+         <v-card
+          class="mx-auto"
+          min-height="130"
+          outlined
+        >
+          <v-list-item two-line>
+            <v-list-item-content>
+              <div class="overline mb-4">Decimal Number</div>
+              <v-list-item-title class="display-3 mb-1">{{convertedNumber}}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-card>
       </v-col>
     </v-row>
   </v-container>
@@ -58,11 +70,13 @@
         v => (v &&  /(0|1)/g.test(v)) || 'Only binary numbers 0 and 1 are allowed',
         v => (v && v.length <= 8) || 'The binary number must be less than 8 characters',
       ],
+      convertedNumber: ''
     }),
 
     methods: {
-      validate () {
+      Convert () {
         this.$refs.form.validate()
+        this.convertedNumber = this.number
       },
       reset () {
         this.$refs.form.reset()
